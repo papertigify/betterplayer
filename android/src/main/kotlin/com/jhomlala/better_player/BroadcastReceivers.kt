@@ -19,11 +19,6 @@ class HomeButtonReceiver(private val plugin: BetterPlayerPlugin) : BroadcastRece
         val reason = intent.getStringExtra("reason")
 
         Log.v(TAG, "System button intent received: $reason")
-
-        when (reason) {
-            "homekey" -> plugin.getFirstExistingPlayer { it.isPlaying.value && plugin.pipPrimary == it }
-                ?.onPictureInPictureStatusChanged(true)
-        }
     }
 
     companion object {
