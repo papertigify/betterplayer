@@ -560,11 +560,13 @@ class BetterPlayerPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
 
     private val lastPlayerRects = mutableMapOf<BetterPlayer, Rect?>()
     private fun enablePictureInPicture(player: BetterPlayer, rect: Rect? = null) {
+        Log.v(TAG, "ENABLE PIP CALLED")
         if (currentPIPPlayer != null) return;
 
         rect?.let { lastPlayerRects[player] = rect }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Log.v(TAG, "VERSION SDK CHECKED")
             val isEnteredPip = activity!!.enterPictureInPictureMode(
                 updatePictureInPictureParams(player)
             )
