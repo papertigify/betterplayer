@@ -571,7 +571,6 @@ class BetterPlayerPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
                 updatePictureInPictureParams(player)
             )
             startPictureInPictureListenerTimer(player)
-            player.onPictureInPictureStatusChanged(true)
             currentPIPPlayer = player
         }
     }
@@ -650,7 +649,6 @@ class BetterPlayerPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
     private fun disablePictureInPicture(player: BetterPlayer) {
         stopPipHandler()
         activity!!.moveTaskToBack(false)
-        player.onPictureInPictureStatusChanged(false)
         currentPIPPlayer = null
     }
 
@@ -661,7 +659,6 @@ class BetterPlayerPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
                 if (activity!!.isInPictureInPictureMode) {
                     pipHandler!!.postDelayed(pipRunnable!!, 100)
                 } else {
-                    player.onPictureInPictureStatusChanged(false)
                     stopPipHandler()
                 }
             }

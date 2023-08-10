@@ -1088,7 +1088,6 @@ class BetterPlayerController {
 
         if (enterFullscreen) enterFullScreen();
 
-        _postEvent(BetterPlayerEvent(BetterPlayerEventType.pipStart));
         return;
       }
       if (Platform.isIOS) {
