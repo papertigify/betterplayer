@@ -568,7 +568,10 @@ class BetterPlayerPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
             val isEnteredPip = activity!!.enterPictureInPictureMode(
                 updatePictureInPictureParams(player)
             )
-            player.onPictureInPictureStatusChanged(isEnteredPip)
+            Log.v(TAG, "IS ENTERED PIP: $isEnteredPip")
+            if (isEnteredPip) {
+                player.onPictureInPictureStatusChanged(true)
+            }
             currentPIPPlayer = player
         }
     }
